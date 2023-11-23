@@ -88,13 +88,8 @@ function Home() {
         if (res.error) {
           toast.error(res.message);
         } else {
-          toast.success(res.message);
+          toast.success(`${book.name} Added in your cart`);
           dispatch(fetchCartData(authData.id));
-          // dispatch(addtoCart(book)); // Dispatch the addToCart action
-
-          // Remove the added book from the book list
-          const updatedBooks = bookResponse.items.filter((item) => item.id !== book.id);
-          setBookResponse({ ...bookResponse, items: updatedBooks });
         }
       })
       .catch((err) => {
